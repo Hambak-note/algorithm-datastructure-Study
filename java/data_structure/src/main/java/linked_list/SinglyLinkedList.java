@@ -118,8 +118,7 @@ public class SinglyLinkedList<E> implements LinkedList<E>{
 
     private Node<E> findNodeByIndex(int index){
         if(index > size-1){
-            System.out.println("저장된 리스트의 길이를 넘어선 위치입니다.");
-            return null;
+            throw new IllegalArgumentException("저장된 리스트의 길이를 넘어선 위치입니다.");
         }
 
         Node<E> findNode = first;
@@ -129,11 +128,6 @@ public class SinglyLinkedList<E> implements LinkedList<E>{
         }
 
         return findNode;
-    }
-
-    @Override
-    public String toString() {
-        return super.toString();
     }
 
     private static class Node<E>{
