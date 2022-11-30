@@ -86,7 +86,20 @@ public class DoublyLinkedList<E> implements LinkedList<E>{
 
     @Override
     public E remove(int index) {
+        if(index == 0) {return shift();}
+        Node<E> delNode = findNodeByIndex(index);
+        //리스트의 요소 개수가 1개인 경우
+        if(first == last){
+            E item = first.item;
+            first = null;
+            last = null;
+            return item;
+        }
+        if(delNode == last) return pop();
 
+        delNode.next.prev = delNode.prev;
+        delNode.prev.next = delNode.next;
+        return delNode.item;
     }
 
     @Override
@@ -97,6 +110,8 @@ public class DoublyLinkedList<E> implements LinkedList<E>{
 
     private Node<E> findNodeByIndex(int index){
         Node<E> temp = first;
+        if(first == null) throw new IllegalStateException("리스트가 비어 있습니다.");
+
         int currentIdx = 0;
         while(temp.next != null){
             if(currentIdx == index){
