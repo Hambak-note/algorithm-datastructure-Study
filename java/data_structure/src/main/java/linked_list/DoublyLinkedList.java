@@ -48,14 +48,10 @@ public class DoublyLinkedList<E> implements LinkedList<E>{
     }
 
     @Override
-    public int size() {
-        return 0;
-    }
-
-    @Override
     public E findItemByIndex(int index) {
         return null;
     }
+
 
     private static class Node<E>{
         E item;
