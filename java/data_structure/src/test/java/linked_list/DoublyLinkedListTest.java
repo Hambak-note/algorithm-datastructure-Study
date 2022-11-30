@@ -72,4 +72,17 @@ class DoublyLinkedListTest {
                 }
         );
     }
+
+    @Test
+    @DisplayName("insert test")
+    void insert(){
+        dLikedList.insert(0, 2);
+        assertAll(
+                () -> assertThat(dLikedList.toString()).isEqualTo("2,1"),
+                () -> {
+                    Exception exception = assertThrows(IllegalStateException.class,
+                            ()->dLikedList.insert(3, 2));
+                }
+        );
+    }
 }
