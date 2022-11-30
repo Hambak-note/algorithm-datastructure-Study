@@ -101,6 +101,22 @@ public class DoublyLinkedList<E> implements LinkedList<E>{
         throw new IllegalStateException("저장된 리스트의 길이를 넘어선 위치입니다.");
     }
 
+    private Node<E> findNodeByIndex(int index){
+        Node<E> temp = first;
+        int currentIdx = 0;
+        while(temp.next != null){
+            if(currentIdx == index){
+                return temp;
+            }
+            temp = temp.next;
+            currentIdx++;
+        }
+
+        if(currentIdx == index) return temp;
+
+        throw new IllegalStateException("저장된 리스트의 길이를 넘어선 위치입니다.");
+    }
+
     @Override
     public String toString() {
         if(first == null) return "";
