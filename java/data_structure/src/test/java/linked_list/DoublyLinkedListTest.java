@@ -41,4 +41,11 @@ class DoublyLinkedListTest {
                 }
         );
     }
+
+    @Test
+    @DisplayName("unShift test")
+    void unShift(){
+        dLikedList.unShift(0);
+        assertThat(dLikedList.toString()).isEqualTo("0,1");
+    }
 }
