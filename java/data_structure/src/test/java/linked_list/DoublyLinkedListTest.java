@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 
 import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 class DoublyLinkedListTest {
@@ -18,16 +19,26 @@ class DoublyLinkedListTest {
     void setUp(){
         dLikedList = new DoublyLinkedList<>();
         dLikedList.push(1);
-        dLikedList.push(2);
-        dLikedList.push(3);
-        dLikedList.push(4);
-        dLikedList.push(5);
     }
 
 
     @Test
     @DisplayName("push test")
     void push() {
-        assertThat(dLikedList.toString()).isEqualTo("1,2,3,4,5");
+        dLikedList.push(2);
+        assertThat(dLikedList.toString()).isEqualTo("1,2");
+    }
+
+    @Test
+    @DisplayName("pop test")
+    void pop(){
+       assertAll(
+                () -> assertThat(dLikedList.pop()).isEqualTo(1),
+                //빈 리스트에서 값을 꺼내려고 하는 경우
+                () -> {
+                    Exception exception = assertThrows(IllegalStateException.class,
+                            () -> dLikedList.pop());
+                }
+        );
     }
 }
