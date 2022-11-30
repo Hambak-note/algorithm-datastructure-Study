@@ -24,7 +24,23 @@ public class DoublyLinkedList<E> implements LinkedList<E>{
 
     @Override
     public E pop() {
-        return null;
+        if(first == null){
+            throw new IllegalStateException("List가 비어 있습니다");
+        }
+
+        E popItem;
+        if(first == last){
+            popItem = first.item;
+            first = null;
+            last = null;
+            return popItem;
+        }
+
+        popItem = last.item;
+        last = last.prev;
+        last.next = null;
+
+        return popItem;
     }
 
     @Override
@@ -52,6 +68,21 @@ public class DoublyLinkedList<E> implements LinkedList<E>{
         return null;
     }
 
+    @Override
+    public String toString() {
+        if(first == null) return "";
+        StringBuilder sb = new StringBuilder();
+
+        Node<E> temp = first;
+        while(temp.next != null){
+            sb.append(temp.item);
+            sb.append(",");
+            temp = temp.next;
+        }
+        sb.append(temp.item);
+
+        return sb.toString();
+    }
 
     private static class Node<E>{
         E item;
