@@ -9,7 +9,6 @@ public interface LinkedList<E> {
     void insert(int index, E element);
     E remove(int index);
 
-    int size();
     E findItemByIndex(int index);
 
 }
