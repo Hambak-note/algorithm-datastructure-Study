@@ -75,12 +75,18 @@ public class DoublyLinkedList<E> implements LinkedList<E>{
 
     @Override
     public void insert(int index, E element) {
+        if(index == 0) { unShift(element);}
 
+        Node<E> newNode = new Node<>(element, null, null);
+        Node<E> findNode = findNodeByIndex(index);
+        newNode.prev = findNode.prev;
+        newNode.next = findNode;
+        findNode.prev = newNode;
     }
 
     @Override
     public E remove(int index) {
-        return null;
+
     }
 
     @Override
