@@ -28,15 +28,13 @@ public class DoublyLinkedList<E> implements LinkedList<E>{
             throw new IllegalStateException("List가 비어 있습니다");
         }
 
-        E popItem;
+        E popItem = last.item;
         if(first == last){
-            popItem = first.item;
             first = null;
             last = null;
             return popItem;
         }
 
-        popItem = last.item;
         last = last.prev;
         last.next = null;
 
@@ -59,7 +57,20 @@ public class DoublyLinkedList<E> implements LinkedList<E>{
 
     @Override
     public E shift() {
-        return null;
+        if(first == null){
+            throw new IllegalStateException("List가 비어 있습니다");
+        }
+
+        E popItem = first.item;
+        if(first == last){
+            first = null;
+            last = null;
+            return popItem;
+        }
+
+        first.next.prev = null;
+        first = first.next;
+        return popItem;
     }
 
     @Override
