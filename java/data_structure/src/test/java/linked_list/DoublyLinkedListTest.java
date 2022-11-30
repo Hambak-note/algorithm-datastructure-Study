@@ -85,4 +85,17 @@ class DoublyLinkedListTest {
                 }
         );
     }
+
+    @Test
+    @DisplayName("remove test")
+    void remove(){
+        assertAll(
+                () -> assertThat(dLikedList.remove(0)).isEqualTo(1),
+                () -> {
+                    Exception exception = assertThrows(IllegalStateException.class,
+                            () -> dLikedList.remove(3));
+                }
+        );
+
+    }
 }
