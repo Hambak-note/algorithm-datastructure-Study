@@ -60,4 +60,16 @@ class DoublyLinkedListTest {
                 }
         );
     }
+
+    @Test
+    @DisplayName("findItemByIndex test")
+    void findItemByIndex(){
+        assertAll(
+                () -> assertThat(dLikedList.findItemByIndex(0)).isEqualTo(1),
+                () -> {
+                    Exception exception = assertThrows(IllegalStateException.class,
+                            () -> dLikedList.findItemByIndex(5));
+                }
+        );
+    }
 }
