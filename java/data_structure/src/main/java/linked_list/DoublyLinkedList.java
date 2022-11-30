@@ -45,7 +45,16 @@ public class DoublyLinkedList<E> implements LinkedList<E>{
 
     @Override
     public void unShift(E element) {
+        Node<E> newNode = new Node<>(element, null, null);
+        if(first == null){
+            first = newNode;
+            last = newNode;
+            return;
+        }
 
+        newNode.next = first;
+        first.prev = newNode;
+        first = newNode;
     }
 
     @Override
