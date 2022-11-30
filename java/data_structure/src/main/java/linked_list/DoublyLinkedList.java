@@ -85,20 +85,8 @@ public class DoublyLinkedList<E> implements LinkedList<E>{
 
     @Override
     public E findItemByIndex(int index) {
-
-        Node<E> temp = first;
-        int currentIdx = 0;
-        while(temp.next != null){
-            if(currentIdx == index){
-                return temp.item;
-            }
-            temp = temp.next;
-            currentIdx++;
-        }
-
-        if(currentIdx == index) return temp.item;
-
-        throw new IllegalStateException("저장된 리스트의 길이를 넘어선 위치입니다.");
+        Node<E> findNode = findNodeByIndex(index);
+        return findNode.item;
     }
 
     private Node<E> findNodeByIndex(int index){
