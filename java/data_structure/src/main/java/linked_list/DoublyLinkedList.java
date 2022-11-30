@@ -2,18 +2,24 @@ package linked_list;
 
 public class DoublyLinkedList<E> implements LinkedList<E>{
 
-    private int size;
     private Node<E> first;
     private Node<E> last;
 
     public DoublyLinkedList(){
-        this.size = 0;
         this.first = null;
         this.last = null;
     }
     @Override
     public void push(E element) {
-
+        Node<E> newNode = new Node<>(element, null, null);
+        if(first == null){
+            first = newNode;
+            last = newNode;
+            return;
+        }
+        last.next = newNode;
+        newNode.prev = last;
+        last = newNode;
     }
 
     @Override
