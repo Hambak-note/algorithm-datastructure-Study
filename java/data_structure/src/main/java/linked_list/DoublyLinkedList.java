@@ -1,6 +1,16 @@
 package linked_list;
 
 public class DoublyLinkedList<E> implements LinkedList<E>{
+
+    private int size;
+    private Node<E> first;
+    private Node<E> last;
+
+    public DoublyLinkedList(){
+        this.size = 0;
+        this.first = null;
+        this.last = null;
+    }
     @Override
     public void push(E element) {
 
