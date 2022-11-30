@@ -48,4 +48,16 @@ class DoublyLinkedListTest {
         dLikedList.unShift(0);
         assertThat(dLikedList.toString()).isEqualTo("0,1");
     }
+
+    @Test
+    @DisplayName("shift test")
+    void shift(){
+        assertAll(
+                () -> assertThat(dLikedList.shift()).isEqualTo(1),
+                () -> {
+                    Exception exception = assertThrows(IllegalStateException.class,
+                            () -> dLikedList.shift());
+                }
+        );
+    }
 }
