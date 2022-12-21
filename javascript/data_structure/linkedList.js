@@ -83,6 +83,7 @@ const LinkedList = class {
 
   insert(index, value) {
     if (this.validate(index) || index < 0) return undefined;
+
     if (index === 0) return this.unshift(value);
 
     let pointer = this.head;
@@ -92,8 +93,6 @@ const LinkedList = class {
       pointer = pointer.next;
       index -= 1;
     }
-
-    // if (pointer === this.tail) return this.push(value);
 
     const newNode = new Node(value);
     newNode.next = pointer.next;
