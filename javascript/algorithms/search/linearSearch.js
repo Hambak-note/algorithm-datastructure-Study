@@ -8,3 +8,5 @@ const linearSearch = (list, toFind) => {
 
   return indexList.shift() || -1;
 };
+
+module.exports = linearSearch;
